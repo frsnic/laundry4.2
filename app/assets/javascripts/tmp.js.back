@@ -1,0 +1,176 @@
+$(function () {
+
+  $( "#tabs" ).tabs();
+  
+  // search user default
+  $.ajax({
+    url: "/users/search_default",
+    dataType: "json",
+    type: "POST",
+    error: function ()  { alert('Error Search Default'); },
+    success: function (result)  {
+              $("#matrix tr td").text('　');
+              for(var i = 0; i < result.length; i ++) {
+                var tr = $("#matrix tr").eq(i + 1);
+                tr.find("td:nth-child(1)").text(result[i].id);
+                tr.find("td:nth-child(2)").text(result[i].name);
+                tr.find("td:nth-child(3)").text(result[i].sex ? "男" : "女");
+                tr.find("td:nth-child(4)").text(result[i].landline);
+                tr.find("td:nth-child(5)").text(result[i].phone);
+                tr.find("td:nth-child(6)").text(result[i].address);
+                tr.find("td:nth-child(7)").text(result[i].annotate);
+              };
+             }
+  });
+
+  //autocomplete
+  $("#search_box").keyup(function (e) {
+    $.ajax({
+      url: "/users/autocomplete",
+      dataType: "json",
+      type: "POST",
+      data: {"value" : $("#search_box").val(), "type" : $("input[name='radio']:checked").val()},
+      error: function () { alert('Error AutoComplete'); },
+      success: function (result) {
+                $("#matrix tr td").text('　');
+                for(var i = 0; i < result.length; i ++) {
+                  var tr = $("#matrix tr").eq(i + 1);
+                  tr.find("td:nth-child(1)").text(result[i].id);
+                  tr.find("td:nth-child(2)").text(result[i].name);
+                  tr.find("td:nth-child(3)").text(result[i].sex ? "男" : "女");
+                  tr.find("td:nth-child(4)").text(result[i].landline);
+                  tr.find("td:nth-child(5)").text(result[i].phone);
+                  tr.find("td:nth-child(6)").text(result[i].address);
+                  tr.find("td:nth-child(7)").text(result[i].annotate);
+                };
+               }
+    });
+  });
+
+  //click radio
+  $("INPUT[NAME=radio]").click(function () {
+    $("#search_box").trigger("keyup");
+  });
+
+  //click matrix td  
+  $("#matrix td").click(function () {
+    $("#matrix tr").removeClass("selected");
+    $(this).parent().addClass("selected");
+  });
+
+  //double click matrix td
+  $("#matrix td").dblclick(function () {
+    $("#tabs a[href='#tabs-2']").trigger("click");
+    if ( parseInt($(".selected td:first").text()) > 0 )
+    {
+      $.ajax({
+        url: "/users/search_user",
+        dataType: "json",
+        type: "POST",
+        data: { "id" : $(".selected td:first").text() },
+        error: function () { alert('Error Search User'); },
+        success: function (result) {
+                  if (result[0])
+                  {
+                    var td = $("#user-table tr td input");
+                    td.eq(0).val(result[0].id);
+                    td.eq(1).val(result[0].name);
+                    td.eq(2).val(result[0].sex ? "男" : "女");
+                    td.eq(3).val(result[0].balance);
+                      value = parseInt( td.eq(3).val() );
+                      if (value >= 0)
+                        td.eq(3).addClass("positive");
+                      else
+                        td.eq(3).addClass("negative");
+                    td.eq(4).val(result[0].phone);
+                    td.eq(5).val(result[0].landline);
+                      array = result[0].discount.split(','); 
+                      if ( (parseInt(array[0]) + parseInt(array[1]) + parseInt(array[2]) + parseInt(array[3])) != 400)
+                      {
+                        td.eq(6).val(result[0].discount);
+                      }
+                    td.eq(7).val(result[0].address);
+                    td.eq(8).val(result[0].annotate);
+                    $(".modify").hide();
+                    $(".show").show();
+                  }
+                  else
+                    alert('Error Search User ID');
+        }
+      });
+      
+    }
+  });
+
+  //tab-2 get into
+  $("#tabs a[href ='#tabs-2']").click(function () {
+    //initialization
+    $("#user-table tr td input").val("　");
+    $("#user-table tr td input").removeClass("negative positive");
+    $(".modify").show();
+    $(".show").hide();
+  });
+
+  $("#go_adduser_btn").click(function () {
+    $("#tabs a[href ='#tabs-2']").trigger("click");
+  });
+  
+  $("#search_initial_btn").click(function () {
+    $("#search_box").val('');
+    $("#search_box").trigger("keyup");
+    $("#matrix tr").removeClass("selected");
+    $("#user-table tr td input").val("　");
+    $("#user-table tr td input").removeClass("negative positive");
+    $(".modify").show();
+    $(".show").hide();
+    $("#tabs a[href ='#tabs-1']").trigger("click");
+  });
+
+  $("#search_btn").click(function () {
+    $(".selected td").trigger("dblclick");
+  });
+
+  $("#reset_user_btn").click(function () {
+    $("#user-table tr td input").val("　");
+  });
+  
+  $("#cloth_send_btn").click(function () {
+  });
+  
+  $("#cloth_out_btn").click(function () {
+  });
+  
+  $("#new_user_btn").click(function () {
+  });
+  
+  $("#edit_user_btn").click(function () {
+    var r = confirm("確定要修改 "+ $("#user-table tr td:nth-child(2) input").val() + " 嗎 ?");
+    if (r == true) {
+      $.ajax({
+        url: "/users/edit_user",
+        type: "PUT",
+        data: { "id" : $("#user-table tr td:first input").val() },
+        error: function () { alert('Delete failed'); },
+        success: function (result) {
+                  $("#search_initial_btn").trigger("click");
+        }
+      });
+    }   
+  });
+
+  $("#delete_user_btn").click(function () {
+    var r = confirm("確定要刪除 "+ $("#user-table tr td:nth-child(2) input").val() + " 嗎 ?");
+    if (r == true) {
+      $.ajax({
+        url: "/users/delete_user",
+        type: "POST",
+        data: { "id" : $("#user-table tr td:first input").val() },
+        error: function () { alert('Delete failed'); },
+        success: function (result) {
+                  $("#search_initial_btn").trigger("click");
+        }
+      });
+    }
+  });
+  
+});

@@ -1,0 +1,33 @@
+
+  <div id="tabs-2">
+    <%= render :partial => "form" %>
+    <div>
+
+    </div>
+    <div id="user-bill">
+      <p>
+        <div class="modify" style="padding-left: 140px;">
+          <button class="btn" id="reset_user_btn">重置</button>
+          <button class="btn" id="new_user_btn">新增客戶</button>
+        </div>
+        <div class="show">
+          <button class="btn" id="cloth_send_btn">收件</button>
+          <button class="btn" id="cloth_out_btn">取件</button>
+          <button class="btn" id="edit_user_btn">修改客戶</button>
+          <button class="btn" id="delete_user_btn">刪除客戶</button>
+        </div>
+      </p>
+      <table id="user-bill-list" class="alltr show">
+        <tr class="ui-widget-header">
+          <th style="width:100px";> 單號    </th>
+          <th style="width:100px";> 衣服種類  </th>
+          <th style="width:50px";> 顏色   </th>
+          <th style="width:75px";> 洗法   </th>
+          <th style="width:75px";> 洗號   </th>
+          <th style="width:125px";>收件日期 </th>
+          <th style="width:75px";> 單價   </th>
+          <th style="width:100px";>備註   </th>
+        </tr>
+      </table>
+    </div>
+  </div>

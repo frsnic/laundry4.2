@@ -1,0 +1,42 @@
+// Place all the styles related to the Webs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.alltr tr td,th {
+  text-align: center; 
+  border: solid 2px black;
+}
+.selected {
+  background-color: yellow;
+}
+.negative {
+  color: red;
+}
+.positive {
+  color: blue;
+}
+.show {
+  display: none;
+}
+.btn {
+  -webkit-appearance: none;
+  height: 30px;
+  width: 100px;
+  color: #000;
+  font-weight: bold;
+  border: solid #666 1px;
+  font-size: 14px;
+  background-color: rgb(215, 226, 234);
+  white-space: nowrap;
+}
+#store_name {
+  font: normal normal 40px Arial;
+  position: fixed;
+  z-index: 100;
+  top: 21px;
+  right: 30px;
+}
+#user-account input{
+  text-align: center; 
+  border: 0px;
+}
