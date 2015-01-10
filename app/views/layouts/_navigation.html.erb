@@ -1,36 +1,9 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to '首頁', root_path, class: 'navbar-brand' %>
-      <ul class="nav navbar-nav">
-        <% if !user_signed_in? %>
-          <li><%= link_to '登入', new_user_session_path %></li>
-          <li><%= link_to '註冊', new_user_registration_path %></li>
-        <% else %>
-          <%= render 'layouts/navigation_links' %>
-        <% end %>
-      </ul>
-    </div>
-    <div class="collapse navbar-collapse">
-      <% if user_signed_in? %>
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-              <span style="padding-right: 5px;">設定</span><span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu" style="min-width: 120px; text-align: center;">
-              <%= render 'layouts/navigation_dropdown_links' %>
-            </ul>
-          </li>
-        </ul>
-      <% end %>
-    </div>
-  </div>
-</nav>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active"><a href="#">首頁</a></li>
+  <% if !user_signed_in? %>
+    <li><%= link_to '登入', new_user_session_path %></li>
+    <li><%= link_to '註冊', new_user_registration_path %></li>
+  <% else %>
+    <%= render 'layouts/navigation_links' %>
+  <% end %>
+</ul>

@@ -10,12 +10,33 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <div class="container">
+      <div class="header">
+        <div class="logo">
+          <h1>Lanudry 4.2</h1>
+          <div class="subtitle">洗衣管理系統</div>
+        </div>
+      </div>
+      <div class="inner_nav_tab">
+        <%= render 'layouts/navigation' %>
+      </div>
+      <div class="inner_content">
+        <div class="notice">
+          <p class="notice_info">
+            網站測試中 ...
+          </p>
+        </div>
+        <div class="content">
+          <main role="main">
+             <%= render 'layouts/messages' %>
+             <%= yield %>
+          </main>
+        </div>
+      </div>
+      <div class="footer">
+        Lanudry 4.2 | Copyright © 2015 Yu-Shing Shen. All Rights Reserved.<br>
+        最後編輯時間：2015-01-10 | <a href="https://github.com/frsnic/laundry4.2">GitHub</a>
+      </div>
+    </div>
   </body>
 </html>

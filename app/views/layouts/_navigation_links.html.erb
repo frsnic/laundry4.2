@@ -1,3 +1,18 @@
 <%# add navigation links to this file %>
 <li><%= link_to '尋找客戶', '#' %></li>
 <li><%= link_to '新增客戶', '#' %></li>
+
+<%# add dropdown navigation links here %>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span style="padding-right: 5px;">設定</span><span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu" style="min-width: 120px;">
+    <li><%= link_to '帳戶資訊', edit_user_registration_path %></li>
+    <% if current_user.admin? %>
+      <li><%= link_to '管理員', '/admin' %></li>
+      <li><%= link_to '使用者', users_path %></li>
+    <% end %>
+    <li><%= link_to '登出', destroy_user_session_path, :method=>'delete' %></li>
+  </ul>
+</li>
