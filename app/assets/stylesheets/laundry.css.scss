@@ -1,0 +1,76 @@
+// Place all the styles related to the Webs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #ddd;
+}
+
+.container {
+  width: 940px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #ddd;
+}
+
+// header
+
+.header {
+  margin-top: .5em;
+  margin-bottom: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  overflow: hidden;
+}
+
+.logo {
+  width: 30%;
+  float: left;
+}
+
+.subtitle {
+  padding-left: 120px;
+  font-size: 16px;
+}
+
+.fright {
+  padding-top: 3em;
+  padding-right: 1em;
+  float: right;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+// inner tab
+.inner_nav_tab{
+  padding-left: 15px;
+  background: #ddd;
+}
+
+// inner content
+
+.notice_info {
+  padding: 1em 1.5em;
+  margin-bottom: 1.5em;
+  background: #6aa;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.inner_content {
+  padding: 1em 1.5em 1em 1.5em;
+  background: #fff;
+  border-radius: 10px;
+}
+
+// footer
+.footer {
+  padding: 1em 1.5em;
+  margin-top: 2em;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #ccc;
+  font-weight: 700;
+}

@@ -12,6 +12,22 @@ class UsersController < ApplicationController
     authorize @user
   end
 
+  def new
+    @user = User.new
+    #respond_to :html
+    #respond_with(@user)
+    render :text => "fr"
+  end
+
+  def edit
+  end
+
+  def create
+    @user = User.new(User_params)
+    flash[:notice] = 'User was successfully created.' if @user.save
+    respond_with(@user)
+  end
+
   def update
     @user = User.find(params[:id])
     authorize @user
@@ -31,8 +47,12 @@ class UsersController < ApplicationController
 
   private
 
-  def secure_params
-    params.require(:user).permit(:role)
-  end
+    def secure_params
+      params.require(:user).permit(:role)
+    end
+
+    def user_params
+      params[:user]
+    end
 
 end
