@@ -14,6 +14,14 @@ class UserPolicy
     @current_user.admin? or @current_user == @user
   end
 
+  def new?
+    @current_user.admin?
+  end
+
+  def registrations?
+    @current_user.admin?
+  end
+
   def update?
     @current_user.admin?
   end

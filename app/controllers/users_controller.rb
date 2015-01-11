@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized
 
+  respond_to :html
+
   def index
     @users = User.all
     authorize User
@@ -14,16 +16,15 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    #respond_to :html
-    #respond_with(@user)
-    render :text => "fr"
+    authorize User
   end
 
   def edit
   end
 
-  def create
-    @user = User.new(User_params)
+  def registrations
+    authorize User
+    @user = User.new(user_params)
     flash[:notice] = 'User was successfully created.' if @user.save
     respond_with(@user)
   end
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params[:user]
+      params.require(:user).permit(:name, :password, :phone)
     end
 
 end
