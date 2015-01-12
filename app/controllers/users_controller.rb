@@ -14,19 +14,7 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def new
-    @user = User.new
-    authorize User
-  end
-
   def edit
-  end
-
-  def registrations
-    authorize User
-    @user = User.new(user_params)
-    flash[:notice] = 'User was successfully created.' if @user.save
-    respond_with(@user)
   end
 
   def update
@@ -50,10 +38,6 @@ class UsersController < ApplicationController
 
     def secure_params
       params.require(:user).permit(:role)
-    end
-
-    def user_params
-      params.require(:user).permit(:name, :password, :phone)
     end
 
 end

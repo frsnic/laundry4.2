@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Members</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th style="width:  50px;">客號</th>
+      <th style="width: 100px;">姓名</th>
+      <th style="width:  50px;">性別</th>
+      <th style="width: 100px;">電話</th>
+      <th style="width: 150px;">手機</th>
+      <th style="width: 100px;">餘額</th>
+      <th style="width: 150px;">備註</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td> <%= member.id %> </td>
+        <td> <%= member.name %> </td>
+        <td> <%= member.sex ? '男' : '女' %> </td>
+        <td> <%= member.phone %> </td>
+        <td> <%= member.landline %> </td>
+        <td> <%= member.balance %> </td>
+        <td> <%= member.annotate %> </td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

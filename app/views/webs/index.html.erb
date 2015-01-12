@@ -10,15 +10,15 @@
         <th style="width:200px;">地址</th>
         <th style="width:200px;">備註</th>
       </tr>
-      <% @users.each do |user| %>
+      <% @members.each do |member| %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= user.name %></td>
-          <td><%= user.sex ? '男' : '女' %></td>
-          <td><%= user.landline %></td>
-          <td><%= user.phone %></td>
-          <td><%= user.address %></td>
-          <td><%= user.annotate %></td>
+          <td><%= member.id %></td>
+          <td><%= member.name %></td>
+          <td><%= member.sex ? '男' : '女' %></td>
+          <td><%= member.landline %></td>
+          <td><%= member.phone %></td>
+          <td><%= member.address %></td>
+          <td><%= member.annotate %></td>
         </tr>
       <% end %>
     </table>
@@ -26,6 +26,6 @@
   <div>
     <input type="text" id="search_box"/>
     <button class="btn" id="search_btn">確認</button>
-    <a href="/users/new"><button class="btn" id="go_adduser_btn">新增客戶</button></a>
+    <a href="/members/new"><button class="btn">新增客戶</button></a>
   </div>
 </div>

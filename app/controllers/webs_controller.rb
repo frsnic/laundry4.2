@@ -1,7 +1,7 @@
 class WebsController < ApplicationController
 
   def index
-    @users = User.all
+    @members = Member.all
   end
 
 end
