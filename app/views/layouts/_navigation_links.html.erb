@@ -1,7 +1,13 @@
 <%# add navigation links to this file %>
-<li class="active"><%= link_to '尋找客戶', '/webs/' %></li>
-<li><%= link_to '新增客戶', '/members/new' %></li>
-<li><%= link_to '總類設定', '#' %></li>
+<li class="<%= controller.class == WebsController and controller.action_name == 'index' ? 'active' : '' %>">
+  <%= link_to '尋找客戶', '/webs/' %>
+</li>
+<li class="<%= controller.class == MembersController and controller.action_name == 'new' ? 'active' : '' %>">
+  <%= link_to '新增客戶', '/members/new' %>
+</li>
+<li class="<%= controller.class == WebsController and controller.action_name == 'index' ? 'active' : '' %>">
+  <%= link_to '總類設定', '#' %>
+</li>
 
 <%# add dropdown navigation links here %>
 <li class="dropdown">

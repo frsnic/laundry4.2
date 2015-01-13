@@ -7,32 +7,31 @@ class MemberPolicy
   end
 
   def index?
-    @current_user.admin?
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
   def show?
-    @current_user.admin? or @current_user == @member
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
   def new?
-    @current_user.admin?
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
   def edit?
-    @current_user.admin?
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
   def create?
-    @current_user.admin?
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
   def update?
-    @current_user.admin?
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
   def destroy?
-    return false if @current_user == @member
-    @current_user.admin?
+    @current_user.manger? or @current_user.trial_manger? or @current_user.admin?
   end
 
 end

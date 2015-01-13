@@ -53,7 +53,7 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:name, :sex, :phone, :landline, :address, :balance, :discount, :annotate)
+      params.require(:member).permit(:name, :sex, :phone, :address, :balance, :discount, :annotate)
     end
 
 end

@@ -2,15 +2,22 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :name,     label: "姓名", required: true %>
-    <%= f.input :phone,    label: "手機", required: true %>
-    <%= f.collection_radio_buttons :sex, [[true, '男'] ,[false, '女']], :first, :last %>
-    <%= f.input :landline, label: "電話" %>
-    <%= f.input :address,  label: "地址" %>
-    <%= f.input :balance,  label: "餘額" %>
-    <%= f.input :annotate, label: "備註" %>
+    <%= f.input :name,  label: "姓名", required: true %>
+    <%= f.input :phone, label: "電話", required: true %>
+
+    <button type="button" id="toggleMoreBtn" data-loading-text="Hide" class="btn btn-primary" autocomplete="off">
+      More
+    </button>
+
+    <div id="more_btn" style="padding-top: 20px; display: none; ">
+        <%= f.input :sex, collection: [[true, '男'], [false, '女']], as: :radio_buttons, label: '性別', label_method: :last %>
+        <%= f.input :address,  label: "地址" %>
+        <%= f.input :balance,  label: "餘額" %>
+        <%= f.input :annotate, label: "備註" %>
+    </div>
   </div>
 
+  <br>
   <div class="form-actions">
     <%= f.button :submit, '儲存' %>
   </div>

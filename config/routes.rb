@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :cloths
+
+  resources :stores
+
+  resources :store_users
+
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users

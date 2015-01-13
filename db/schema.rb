@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112144351) do
+ActiveRecord::Schema.define(version: 20150113152604) do
 
   create_table "cloths", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
@@ -26,15 +26,14 @@ ActiveRecord::Schema.define(version: 20150112144351) do
     t.integer  "day_wash",   limit: 4
     t.integer  "day_iron",   limit: 4
     t.integer  "day_else",   limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "members", force: :cascade do |t|
     t.string  "name",     limit: 255
     t.boolean "sex",      limit: 1
     t.string  "phone",    limit: 255
-    t.string  "landline", limit: 255
     t.string  "address",  limit: 255
     t.integer "balance",  limit: 4
     t.string  "discount", limit: 255,   default: "100, 100, 100, 100"
@@ -64,12 +63,12 @@ ActiveRecord::Schema.define(version: 20150112144351) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "member_id",  limit: 4
+    t.integer  "user_id",    limit: 4
     t.integer  "store_id",   limit: 4
     t.integer  "sum",        limit: 4
     t.string   "annotate",   limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "store_members", force: :cascade do |t|
@@ -79,6 +78,13 @@ ActiveRecord::Schema.define(version: 20150112144351) do
     t.datetime "updated_at"
   end
 
+  create_table "store_users", force: :cascade do |t|
+    t.integer  "store_id",   limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "stores", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "phone",      limit: 255
@@ -86,8 +92,8 @@ ActiveRecord::Schema.define(version: 20150112144351) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "annotate",   limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|

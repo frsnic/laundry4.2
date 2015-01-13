@@ -1,4 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>User:</strong>
+  <%= @order.user_id %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @order.store_id %>
+</p>
+
+<p>
+  <strong>Sum:</strong>
+  <%= @order.sum %>
+</p>
+
+<p>
+  <strong>Annotate:</strong>
+  <%= @order.annotate %>
+</p>
+
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

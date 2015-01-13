@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Store:</strong>
+  <%= @cloth.store_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cloth.name %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @cloth.unit %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @cloth.code %>
+</p>
+
+<p>
+  <strong>Price dry:</strong>
+  <%= @cloth.price_dry %>
+</p>
+
+<p>
+  <strong>Price wash:</strong>
+  <%= @cloth.price_wash %>
+</p>
+
+<p>
+  <strong>Price iron:</strong>
+  <%= @cloth.price_iron %>
+</p>
+
+<p>
+  <strong>Price else:</strong>
+  <%= @cloth.price_else %>
+</p>
+
+<p>
+  <strong>Day dry:</strong>
+  <%= @cloth.day_dry %>
+</p>
+
+<p>
+  <strong>Day wash:</strong>
+  <%= @cloth.day_wash %>
+</p>
+
+<p>
+  <strong>Day iron:</strong>
+  <%= @cloth.day_iron %>
+</p>
+
+<p>
+  <strong>Day else:</strong>
+  <%= @cloth.day_else %>
+</p>
+
+<%= link_to 'Edit', edit_cloth_path(@cloth) %> |
+<%= link_to 'Back', cloths_path %>

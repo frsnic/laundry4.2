@@ -1,0 +1,22 @@
+<%= simple_form_for(@cloth) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :store_id %>
+    <%= f.input :name %>
+    <%= f.input :unit %>
+    <%= f.input :code %>
+    <%= f.input :price_dry %>
+    <%= f.input :price_wash %>
+    <%= f.input :price_iron %>
+    <%= f.input :price_else %>
+    <%= f.input :day_dry %>
+    <%= f.input :day_wash %>
+    <%= f.input :day_iron %>
+    <%= f.input :day_else %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

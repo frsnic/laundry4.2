@@ -22,12 +22,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    flash[:notice] = 'Order was successfully created.' if @order.save
+    @order.save
     respond_with(@order)
   end
 
   def update
-    flash[:notice] = 'Order was successfully updated.' if @order.update(order_params)
+    @order.update(order_params)
     respond_with(@order)
   end
 
@@ -37,12 +37,11 @@ class OrdersController < ApplicationController
   end
 
   private
-
     def set_order
       @order = Order.find(params[:id])
     end
 
     def order_params
-      params[:order]
+      params.require(:order).permit(:user_id, :store_id, :sum, :annotate)
     end
 end

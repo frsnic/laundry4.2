@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cloths</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Store</th>
+      <th>Name</th>
+      <th>Unit</th>
+      <th>Code</th>
+      <th>Price dry</th>
+      <th>Price wash</th>
+      <th>Price iron</th>
+      <th>Price else</th>
+      <th>Day dry</th>
+      <th>Day wash</th>
+      <th>Day iron</th>
+      <th>Day else</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cloths.each do |cloth| %>
+      <tr>
+        <td><%= cloth.store_id %></td>
+        <td><%= cloth.name %></td>
+        <td><%= cloth.unit %></td>
+        <td><%= cloth.code %></td>
+        <td><%= cloth.price_dry %></td>
+        <td><%= cloth.price_wash %></td>
+        <td><%= cloth.price_iron %></td>
+        <td><%= cloth.price_else %></td>
+        <td><%= cloth.day_dry %></td>
+        <td><%= cloth.day_wash %></td>
+        <td><%= cloth.day_iron %></td>
+        <td><%= cloth.day_else %></td>
+        <td><%= link_to 'Show', cloth %></td>
+        <td><%= link_to 'Edit', edit_cloth_path(cloth) %></td>
+        <td><%= link_to 'Destroy', cloth, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cloth', new_cloth_path %>
