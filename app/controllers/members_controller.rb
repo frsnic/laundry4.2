@@ -8,7 +8,7 @@ class MembersController < ApplicationController
   respond_to :html
 
   def index
-    @members = Member.all
+    @members = Member.where(:store_id => session[:store_id])
     respond_with(@members)
   end
 
@@ -27,6 +27,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(member_params)
     begin
+      @member.store_id = session[:store_id]
       flash[:notice] = 'Member was successfully created.' if @member.save!
     rescue => e
       logger.error "== #{e.message} =="

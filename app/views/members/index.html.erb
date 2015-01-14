@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Members</h1>
-
 <table class="table">
   <thead>
     <tr>
@@ -31,6 +29,8 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Member', new_member_path %>
+<p>
+  <input type="text" id="search_box"/>
+  <button class="btn" id="search_btn">確認</button>
+  <a href="/members/new"><button class="btn">新增客戶</button></a>
+</p>

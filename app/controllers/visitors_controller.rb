@@ -1,7 +1,10 @@
 class VisitorsController < ApplicationController
-  
+
   def index
-    redirect_to "/webs" if user_signed_in?
+    if user_signed_in?
+      session[:store_id] = current_user.stores.first.id
+      redirect_to "/members" and return
+    end
   end
-  
+
 end
