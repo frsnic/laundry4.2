@@ -4,13 +4,13 @@
   <div class="form-inputs">
     <%= f.input :name,  label: "姓名", required: true %>
     <%= f.input :phone, label: "電話", required: true %>
+    <%= f.input :sex, as: :radio_buttons, collection: [[true, '男'], [false, '女']], label: '性別', label_method: :last, checked: [true, '男'] %>
 
-    <button type="button" id="toggleMoreBtn" data-loading-text="Hide" class="btn btn-primary" autocomplete="off">
+    <button type="button" id="toggleMoreBtn" class="btn btn-primary" autocomplete="off">
       More
     </button>
 
     <div id="more_btn" style="padding-top: 20px; display: none; ">
-        <%= f.input :sex, collection: [[true, '男'], [false, '女']], as: :radio_buttons, label: '性別', label_method: :last %>
         <%= f.input :address,  label: "地址" %>
         <%= f.input :balance,  label: "餘額" %>
         <%= f.input :annotate, label: "備註" %>

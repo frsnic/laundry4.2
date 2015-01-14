@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113152604) do
+ActiveRecord::Schema.define(version: 20150114135428) do
 
   create_table "cloths", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
@@ -31,13 +31,17 @@ ActiveRecord::Schema.define(version: 20150113152604) do
   end
 
   create_table "members", force: :cascade do |t|
-    t.string  "name",     limit: 255
-    t.boolean "sex",      limit: 1
-    t.string  "phone",    limit: 255
-    t.string  "address",  limit: 255
-    t.integer "balance",  limit: 4
-    t.string  "discount", limit: 255,   default: "100, 100, 100, 100"
-    t.text    "annotate", limit: 65535
+    t.integer "store_id",      limit: 4
+    t.string  "name",          limit: 255
+    t.boolean "sex",           limit: 1
+    t.string  "phone",         limit: 255
+    t.string  "address",       limit: 255
+    t.integer "balance",       limit: 4
+    t.integer "discount_dry",  limit: 4,     default: 100
+    t.integer "discount_wash", limit: 4,     default: 100
+    t.integer "discount_iron", limit: 4,     default: 100
+    t.integer "discount_else", limit: 4,     default: 100
+    t.text    "annotate",      limit: 65535
   end
 
   create_table "order_item_lists", force: :cascade do |t|
@@ -71,13 +75,6 @@ ActiveRecord::Schema.define(version: 20150113152604) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "store_members", force: :cascade do |t|
-    t.integer  "store_id",   limit: 4
-    t.integer  "member_id",  limit: 4
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "store_users", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
     t.integer  "user_id",    limit: 4
@@ -94,6 +91,13 @@ ActiveRecord::Schema.define(version: 20150113152604) do
     t.string   "annotate",   limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "user_members", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "member_id",  limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|

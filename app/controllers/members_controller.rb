@@ -1,4 +1,5 @@
 class MembersController < ApplicationController
+  before_action :is_manger?
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   before_filter :authenticate_user!
@@ -7,46 +8,47 @@ class MembersController < ApplicationController
   respond_to :html
 
   def index
-    authorize Member
     @members = Member.all
     respond_with(@members)
   end
 
   def show
-    authorize Member
     respond_with(@member)
   end
 
   def new
     @member = Member.new
-    authorize Member
     respond_with(@member)
   end
 
   def edit
-    authorize Member
   end
 
   def create
-    authorize Member
     @member = Member.new(member_params)
-    flash[:notice] = 'Member was successfully created.' if @member.save!
+    begin
+      flash[:notice] = 'Member was successfully created.' if @member.save!
+    rescue => e
+      logger.error "== #{e.message} =="
+    end
     respond_with(@member)
   end
 
   def update
-    authorize Member
     @member.update(member_params)
     respond_with(@member)
   end
 
   def destroy
-    authorize Member
     @member.destroy
     respond_with(@member)
   end
 
   private
+
+    def is_manger?
+      authorize Member, :is_manger?
+    end
 
     def set_member
       @member = Member.find(params[:id])

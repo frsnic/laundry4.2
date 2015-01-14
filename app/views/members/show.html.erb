@@ -1,4 +1,64 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Member:</strong>
+  <%= @member.id %>
+</p>
+
+<p>
+  <strong>Store:</strong>
+  <%# @member.store_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Sex:</strong>
+  <%= @member.sex ? '男' : '女' %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @member.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @member.address %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @member.balance %>
+</p>
+
+<p>
+  <strong>Discount Dry:</strong>
+  <%= @member.discount_dry %>
+</p>
+
+<p>
+  <strong>Discount Wash:</strong>
+  <%= @member.discount_wash %>
+</p>
+
+<p>
+  <strong>Discount Iron:</strong>
+  <%= @member.discount_iron %>
+</p>
+
+<p>
+  <strong>Discount Else:</strong>
+  <%= @member.discount_else %>
+</p>
+
+<p>
+  <strong>Annotate:</strong>
+  <%= @member.annotate %>
+</p>
+
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
