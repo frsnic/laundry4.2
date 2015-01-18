@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on 'ready page:change', ->
+
   # new/edit member page
   $("#toggleMoreBtn").click ->
     $("#more_btn").toggle();
@@ -10,3 +11,7 @@ $(document).on 'ready page:change', ->
       $("#toggleMoreBtn").html("More");
     else
       $("#toggleMoreBtn").html("Hide");
+
+  # double click table in index
+  $(".table tbody tr").dblclick ->
+    location.href = '/orders/member?id=' + $(this).attr("member_id");

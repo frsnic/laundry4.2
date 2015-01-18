@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114144102) do
+ActiveRecord::Schema.define(version: 20150118153557) do
 
   create_table "cloths", force: :cascade do |t|
     t.integer  "store_id",   limit: 4
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150114144102) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
+    t.integer  "member_id",  limit: 4
     t.integer  "store_id",   limit: 4
     t.integer  "sum",        limit: 4
     t.string   "annotate",   limit: 255

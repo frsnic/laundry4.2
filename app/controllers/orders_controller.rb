@@ -36,6 +36,12 @@ class OrdersController < ApplicationController
     respond_with(@order)
   end
 
+  def member
+    @member = Member.where(store_id: session[:store_id], id: params[:id]).first
+    @orders = Order.where(member_id: @member.id)
+    respond_with(@order)
+  end
+
   private
     def set_order
       @order = Order.find(params[:id])

@@ -12,7 +12,11 @@ Rails.application.routes.draw do
 
   resources :members
 
-  resources :orders
+  resources :orders do
+    collection do
+      get  :member
+    end
+  end
 
   resources :users do
     collection do

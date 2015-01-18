@@ -14,13 +14,13 @@
 
   <tbody>
     <% @members.each do |member| %>
-      <tr>
-        <td> <%= member.id %> </td>
-        <td> <%= member.name %> </td>
-        <td> <%= member.sex ? '男' : '女' %> </td>
-        <td> <%= member.phone %> </td>
-        <td> <%= member.balance %> </td>
-        <td> <%= member.annotate %> </td>
+      <tr member_id="<%= member.id %>">
+        <td><%= member.id %></td>
+        <td><%= member.name %></td>
+        <td><%= member.sex ? '男' : '女' %></td>
+        <td><%= member.phone %></td>
+        <td><%= member.balance %></td>
+        <td><%= member.annotate %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>
         <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,8 +29,11 @@
   </tbody>
 </table>
 
-<p>
-  <input type="text" id="search_box"/>
-  <button class="btn" id="search_btn">確認</button>
+<%= will_paginate @posts%>
+
+<%= search_form_for @q do |member| %>
+  <%= member.label :id_or_name_or_phone_or_annotate_cont, style: "display: none;" %>
+  <%= member.search_field :id_or_name_or_phone_or_annotate_cont %>
+  <%= member.submit "搜尋", class: "btn" %>
   <a href="/members/new"><button class="btn">新增客戶</button></a>
-</p>
+<% end %>

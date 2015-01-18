@@ -8,7 +8,10 @@ class MembersController < ApplicationController
   respond_to :html
 
   def index
-    @members = Member.where(:store_id => session[:store_id])
+    @q = Member.where(:store_id => session[:store_id]).ransack(params[:q])
+    @members = @q.result.page(params[:page])
+    @members = Member.paginate(:page => params[:page], :per_page => 10)
+    @members = @q.result.paginate(:page => params[:page], :per_page => 10)
     respond_with(@members)
   end
 

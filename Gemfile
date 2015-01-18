@@ -46,3 +46,4 @@ end
 gem 'exception_notification'
 gem 'will_paginate'
 gem 'better_errors'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4.2'

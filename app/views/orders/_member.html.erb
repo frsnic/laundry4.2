@@ -1,0 +1,55 @@
+<div class="member_detail">
+  <p>
+    <span style="">
+      <strong>姓名：</strong>
+      <%= @member.name %>
+    </span>
+    <span>
+      <strong>餘額：</strong>
+      <%= @member.balance %>
+    </span>
+    <span>
+      <strong>性別：</strong>
+      <%= @member.sex ? '男' : '女' %>
+    </span>
+    <span>
+      <strong>客號:</strong>
+      <%= @member.id %>
+    </span>
+  </p>
+
+
+  <p>
+    <span style="width: 48%;">
+      <strong>電話：</strong>
+      <%= @member.phone %>
+    </span>
+    <span>
+      <strong>住址：</strong>
+      <%= @member.address %>
+    </span>
+    <span>
+      <strong>備註：</strong>
+      <%= @member.annotate %>
+    </span>
+  </p>
+
+  <p>
+    <span>
+      <strong>乾洗折扣:</strong>
+      <%= @member.discount_dry %>
+    </span>
+    <span>
+      <strong>水洗折扣:</strong>
+      <%= @member.discount_wash %>
+    </span>
+    <span>
+      <strong>燙熨折扣:</strong>
+      <%= @member.discount_iron %>
+    </span>
+    <span>
+      <strong>其他折扣:</strong>
+      <%= @member.discount_else %>
+    </span>
+  </p>
+</div>
