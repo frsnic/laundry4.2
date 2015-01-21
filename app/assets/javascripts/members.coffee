@@ -4,6 +4,9 @@
 
 $(document).on 'ready page:change', ->
 
+  if $("#member_phone_tagsinput").length == 0
+    $('#member_phone').tagsInput();
+
   # new/edit member page
   $("#toggleMoreBtn").click ->
     $("#more_btn").toggle();

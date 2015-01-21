@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :name,  label: "姓名", required: true %>
     <%= f.input :phone, label: "電話", required: true %>
-    <%= f.input :sex, as: :radio_buttons, collection: [[true, '男'], [false, '女']], label: '性別', label_method: :last, checked: [true, '男'] %>
+    <%= f.input :sex, as: :radio_buttons, collection: [['男', true], ['女', false]], label: '性別', label_method: :first %>
 
     <button type="button" id="toggleMoreBtn" class="btn btn-primary" autocomplete="off">
       More
