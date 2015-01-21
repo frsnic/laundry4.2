@@ -9,6 +9,9 @@
       <th style="width: 200px;">電話</th>
       <th style="width: 100px;">餘額</th>
       <th style="width: 200px;">備註</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -21,9 +24,9 @@
         <td><%= member.phone %></td>
         <td><%= member.balance %></td>
         <td><%= member.annotate %></td>
-        <td><%= link_to 'Show', member %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="table_action"><%= link_to 'Show', member %></td>
+        <td class="table_action"><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td class="table_action"><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,5 +38,5 @@
   <%= member.label :id_or_name_or_phone_or_annotate_cont, style: "display: none;" %>
   <%= member.search_field :id_or_name_or_phone_or_annotate_cont %>
   <%= member.submit "搜尋", class: "btn" %>
-  <a href="/members/new"><button class="btn">新增客戶</button></a>
+  <a href="<%= new_member_path %>"><button class="btn">新增客戶</button></a>
 <% end %>

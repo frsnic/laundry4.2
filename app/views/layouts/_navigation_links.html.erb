@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
-<li class="<%= controller.class == MembersController ? 'active' : '' %>"><%= link_to '客戶設定', '/members/' %></li>
-<li class="<%= controller.class == ClothsController  ? 'active' : '' %>"><%= link_to '衣服設定', '/cloths/'  %></li>
-<li class="<%= controller.class == OrdersController  ? 'active' : '' %>"><%= link_to '訂單管理', '/orders/'  %></li>
+<li class="<%= controller.class == MembersController ? 'active' : '' %>"><%= link_to '客戶設定', members_path %></li>
+<li class="<%= controller.class == ClothsController  ? 'active' : '' %>"><%= link_to '衣服設定', cloths_path  %></li>
+<li class="<%= controller.class == OrdersController  ? 'active' : '' %>"><%= link_to '訂單管理', orders_path  %></li>
 
 <%# add dropdown navigation links here %>
 <li class="dropdown">

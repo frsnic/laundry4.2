@@ -8,7 +8,10 @@
 }
 
 .member_detail p span {
+  width: 24%;
   font-size: 20px;
   display: inline-block;
-  width: 24%;
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 1.5em;
 }
