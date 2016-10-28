@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150118153557) do
+ActiveRecord::Schema.define(version: 20150125141717) do
 
   create_table "cloths", force: :cascade do |t|
+    t.integer  "group",      limit: 4
     t.integer  "store_id",   limit: 4
     t.string   "name",       limit: 255
     t.string   "unit",       limit: 255
     t.string   "code",       limit: 255
+    t.integer  "order",      limit: 4
     t.integer  "price_dry",  limit: 4
     t.integer  "price_wash", limit: 4
     t.integer  "price_iron", limit: 4
